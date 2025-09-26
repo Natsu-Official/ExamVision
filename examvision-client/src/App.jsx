@@ -4,23 +4,34 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <nav style={{ padding: "10px", background: "#f0f0f0" }}>
-        <Link to="/login" style={{ margin: "0 10px" }}>Нэвтрэх</Link>
-        <Link to="/register" style={{ margin: "0 10px" }}>Бүртгүүлэх</Link>
-        <Link to="/reset" style={{ margin: "0 10px" }}>Нууц үг мартсан</Link>
-      </nav>
+    <div className="auth-page">
+      <header className="auth-header">
+        <div className="brand">
+          <div className="brand-logo">ExamVision</div>
+          <div className="brand-sub">Онлайн шалгалтын систем</div>
+        </div>
 
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/reset" element={<ResetPassword />} />
-        <Route path="*" element={<Login />} />
-      </Routes>
+        <nav className="auth-nav">
+          <Link to="/login" className="nav-link">Нэвтрэх</Link>
+          <Link to="/register" className="nav-link">Бүртгүүлэх</Link>
+          <Link to="/reset" className="nav-link">Нууц үг сэргээх</Link>
+        </nav>
+      </header>
+
+      <main className="auth-main">
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset" element={<ResetPassword />} />
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </main>
+
+      <footer className="auth-footer">
+        <small>© {new Date().getFullYear()} ExamVision</small>
+      </footer>
     </div>
   );
 }
-
-export default App;
